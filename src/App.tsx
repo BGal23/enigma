@@ -8,6 +8,7 @@ import { changeLetters, changeNumbers } from "./utils/change";
 import { runCrypt, turnBackCrypt, State } from "./utils/encryption";
 import changeRotorPosition from "./utils/changeRotorPosition";
 import rotors from "./assets/rotors.json";
+import changePlugboard from "./utils/changePlugboard";
 
 const App = () => {
   const [rotorsState, setRotorState] = useState<State[]>([
@@ -20,6 +21,7 @@ const App = () => {
   const [crypt, setCrypt] = useState<string>("");
   const [cryptArray, setCryptArray] = useState<string[]>([]);
   const [selectedButton, setSelectedButton] = useState("");
+  const [buttonsArray, setButtonsArray] = useState<string[][]>([]);
 
   const encryption = () => {
     const step0 = changeLetters(letter);
@@ -31,8 +33,12 @@ const App = () => {
     const step6 = turnBackCrypt(rotorsState[1], step5);
     const step7 = turnBackCrypt(rotorsState[2], step6);
 
-    cryptArray.push(changeNumbers(step7));
-    setCrypt(cryptArray.join(""));
+    const newLetter = changePlugboard(changeNumbers(step7), buttonsArray);
+
+    if (newLetter !== undefined) {
+      cryptArray.push(newLetter);
+      setCrypt(cryptArray.join(""));
+    }
   };
 
   useEffect(() => {
@@ -71,6 +77,8 @@ const App = () => {
       <Plugboard
         selectedButton={selectedButton}
         setSelectedButton={setSelectedButton}
+        buttonsArray={buttonsArray}
+        setButtonsArray={setButtonsArray}
       />
       <div> </div>
       <MakeRotor />

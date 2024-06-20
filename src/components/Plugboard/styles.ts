@@ -7,6 +7,9 @@ const useStyles = makeStyles(() => ({
     flexWrap: "wrap",
     margin: "1em",
   },
+  activeLetters: {
+    color: "red",
+  },
 }));
 
 export default useStyles;
