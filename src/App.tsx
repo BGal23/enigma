@@ -3,7 +3,7 @@ import Keyboard from "./components/Keyboard/Keyboard";
 import MakeRotor from "./components/MakeRotor/MakeRotor";
 import Rotor from "./components/Rotor/Rotor";
 import Plugboard from "./components/Plugboard/Plugboard";
-import { Grid } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import { changeLetters, changeNumbers } from "./utils/change";
 import { runCrypt, turnBackCrypt, State } from "./utils/encryption";
 import changeRotorPosition from "./utils/changeRotorPosition";
@@ -50,7 +50,7 @@ const App = () => {
   }, [text]);
 
   return (
-    <>
+    <Container maxWidth="sm">
       <Grid container justifyContent="space-between">
         {rotorsState.map((element, index) => (
           <Rotor
@@ -82,7 +82,7 @@ const App = () => {
       />
       <div> </div>
       <MakeRotor />
-    </>
+    </Container>
   );
 };
 

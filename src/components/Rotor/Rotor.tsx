@@ -3,6 +3,7 @@ import rotors from "../../assets/rotors.json";
 import { State } from "../../utils/encryption";
 import useStyles from "./styles";
 import { Box, Grid } from "@material-ui/core";
+import Gear from "../Gear/Gear";
 
 interface Props {
   rotorsState: State[];
@@ -49,15 +50,21 @@ const Rotor: React.FC<Props> = ({
           </option>
         ))}
       </select>
-      <Box className={classes.box}>
-        <span>{rotors[num][position - 1].output}</span>
-        <input
-          type="number"
-          value={rotors[num][position - 1].input}
-          min={1}
-          max={26}
-          onChange={handlePositionChange}
-        />
+      <Box className={classes.numberChangeWrapper}>
+        <Box className={classes.inputWrapper}>
+          <div className={classes.screw}></div>
+          <input
+            className={classes.input}
+            type="number"
+            value={rotors[num][position - 1].input}
+            min={1}
+            max={26}
+            onChange={handlePositionChange}
+          />
+
+          <div className={classes.screw}></div>
+        </Box>
+        <Gear />
       </Box>
     </Grid>
   );

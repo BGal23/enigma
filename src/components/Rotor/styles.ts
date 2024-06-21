@@ -11,16 +11,50 @@ const useStyles = makeStyles(() => ({
       width: "100%",
     },
   },
-  box: {
+  numberChangeWrapper: {},
+  inputWrapper: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: "1em",
-    width: "100%",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "6em",
+    width: "3em",
+    backgroundColor: "#D4D4D4",
+    borderRadius: "50%",
+    border: "2px solid silver",
+    gap: "0.5em",
+  },
+  screw: {
+    content: '""',
+    position: "relative",
+    height: "0.8em",
+    width: "0.8em",
+    backgroundColor: "#D4D4D4",
+    borderRadius: "50%",
+    border: "2px solid silver",
 
-    "& span": {
-      width: "1em",
-      textAlign: "center",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      width: "100%",
+      height: 2,
+      backgroundColor: "silver",
+      transform: "translate(-50%, -50%) rotate(45deg)",
+    },
+  },
+  input: {
+    backgroundColor: "while",
+    borderRadius: 3,
+    border: "2px solid silver",
+    textAlign: "center",
+    "&::-webkit-outer-spin-button, &::-webkit-inner-spin-button": {
+      "-webkit-appearance": "none",
+      margin: 0,
+    },
+    "&[type=number]": {
+      "-moz-appearance": "textfield",
     },
   },
 }));
