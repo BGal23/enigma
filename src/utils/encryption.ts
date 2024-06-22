@@ -30,15 +30,15 @@ export const turnBackCrypt = (
     1 +
     rotors[rotorPosition.num].findIndex(
       (number: Rotor) => number.output === step
-    ); // sprawdzany jest index w króry trafia
+    );
 
   let correctedNumber = checkIndex - rotorPosition.position;
   if (correctedNumber < 0) {
     correctedNumber = correctedNumber + 26;
   }
-  const outputIndexMore = rotors[rotorPosition.num][correctedNumber].output; // to jest output liczby z większym indexem
+  const outputIndexMore = rotors[rotorPosition.num][correctedNumber].output;
 
   return rotors[rotorPosition.num].find(
     (number: Rotor) => number.output === outputIndexMore
-  )?.input; // znajdujemy w którym indexie jest wyzej obliczony output i podajemy input
+  )?.input;
 };

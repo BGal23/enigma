@@ -1,9 +1,9 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import rotors from "../../assets/rotors.json";
 import { State } from "../../utils/encryption";
 import useStyles from "./styles";
 import { Box, Grid } from "@material-ui/core";
-import Gear from "../Gear/Gear";
+import throttle from "lodash/throttle";
 
 interface Props {
   rotorsState: State[];
@@ -22,6 +22,32 @@ const Rotor: React.FC<Props> = ({
 }) => {
   const keys = Object.keys(rotors);
   const classes = useStyles();
+  const [isMove, setIsMove] = useState(false);
+  const [isIncreasing, setIsIncreasing] = useState(true);
+  const isFirstRender = useRef(true);
+  const prevPosition = useRef(position);
+
+  const gear = [0, 10, 20, 30, 40, 50, 60, 70, 80];
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    if (position > prevPosition.current) {
+      setIsIncreasing(true);
+      prevPosition.current = position;
+    } else {
+      setIsIncreasing(false);
+      prevPosition.current = position;
+    }
+
+    setIsMove(true);
+    setTimeout(() => {
+      setIsMove(false);
+    }, 100);
+  }, [position]);
 
   const handleRotorChange = (event: ChangeEvent<HTMLSelectElement>) => {
     rotorsState.splice(index, 1, {
@@ -32,14 +58,32 @@ const Rotor: React.FC<Props> = ({
     changeRotor([...rotorsState]);
   };
 
-  const handlePositionChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handlePositionChange = (value: number) => {
     rotorsState.splice(index, 1, {
       num: num,
-      position: Number(event.target.value),
+      position: value,
     });
 
     changeRotor([...rotorsState]);
   };
+
+  const handleMouseWheel = throttle((event) => {
+    const delta = event.deltaY;
+
+    if (delta > 0) {
+      if (position <= 1) {
+        handlePositionChange(26);
+      } else {
+        handlePositionChange(position - 1);
+      }
+    } else if (delta < 0) {
+      if (position >= 26) {
+        handlePositionChange(1);
+      } else {
+        handlePositionChange(position + 1);
+      }
+    }
+  }, 200);
 
   return (
     <Grid className={classes.rotorWrapper}>
@@ -59,12 +103,25 @@ const Rotor: React.FC<Props> = ({
             value={rotors[num][position - 1].input}
             min={1}
             max={26}
-            onChange={handlePositionChange}
           />
 
           <div className={classes.screw}></div>
         </Box>
-        <Gear />
+        <div className={classes.gearBox} onWheel={handleMouseWheel}>
+          {gear.map((element, index) => (
+            <div
+              key={index}
+              style={{ top: element }}
+              className={`${classes.line} ${
+                isMove
+                  ? isIncreasing
+                    ? "moveLineUp"
+                    : "moveLineDown"
+                  : "resetTransition"
+              }`}
+            ></div>
+          ))}
+        </div>
       </Box>
     </Grid>
   );

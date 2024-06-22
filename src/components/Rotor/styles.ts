@@ -6,19 +6,25 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "center",
     width: "5.5em",
+    gap: "1em",
 
     "& select": {
       width: "100%",
     },
   },
-  numberChangeWrapper: {},
+  numberChangeWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    height: "6em",
+    gap: "1em",
+  },
   inputWrapper: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height: "6em",
     width: "3em",
+    height: "calc(100% - 4px)",
     backgroundColor: "#D4D4D4",
     borderRadius: "50%",
     border: "2px solid silver",
@@ -55,6 +61,38 @@ const useStyles = makeStyles(() => ({
     },
     "&[type=number]": {
       "-moz-appearance": "textfield",
+    },
+  },
+  gearBox: {
+    height: "100%",
+    width: "1em",
+    backgroundColor: "#D4D4D4",
+    borderRadius: 4,
+    // border: "2px solid black",
+    cursor: "row-resize",
+    overflow: "hidden",
+  },
+  line: {
+    width: "200%",
+    height: 2,
+    backgroundColor: "silver",
+    position: "relative",
+    right: "50%",
+    top: "50%",
+    boxShadow: "0px 0px 5px 0px black",
+    transition: "transform 100ms ease-in-out",
+    transform: "translateY(0)",
+
+    "&.moveLineUp": {
+      transform: "translateY(10px)",
+    },
+
+    "&.moveLineDown": {
+      transform: "translateY(-10px)",
+    },
+
+    "&.resetTransition": {
+      transition: "none",
     },
   },
 }));
