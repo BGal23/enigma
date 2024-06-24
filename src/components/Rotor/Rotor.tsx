@@ -1,9 +1,8 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, WheelEvent, useEffect, useRef, useState } from "react";
 import rotors from "../../assets/rotors.json";
 import { State } from "../../utils/encryption";
 import useStyles from "./styles";
 import { Box, Grid } from "@material-ui/core";
-import throttle from "lodash/throttle";
 
 interface Props {
   rotorsState: State[];
@@ -67,7 +66,7 @@ const Rotor: React.FC<Props> = ({
     changeRotor([...rotorsState]);
   };
 
-  const handleMouseWheel = throttle((event) => {
+  const handleMouseWheel = (event: WheelEvent) => {
     const delta = event.deltaY;
 
     if (delta > 0) {
@@ -83,7 +82,7 @@ const Rotor: React.FC<Props> = ({
         handlePositionChange(position + 1);
       }
     }
-  }, 200);
+  };
 
   return (
     <Grid className={classes.rotorWrapper}>
@@ -103,6 +102,7 @@ const Rotor: React.FC<Props> = ({
             value={rotors[num][position - 1].input}
             min={1}
             max={26}
+            onChange={() => {}}
           />
 
           <div className={classes.screw}></div>
@@ -121,6 +121,7 @@ const Rotor: React.FC<Props> = ({
               }`}
             ></div>
           ))}
+          <div className={classes.gearWhole}></div>
         </div>
       </Box>
     </Grid>

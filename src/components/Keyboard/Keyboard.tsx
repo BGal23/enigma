@@ -1,4 +1,6 @@
+import { Grid } from "@material-ui/core";
 import array from "../../assets/letters.json";
+import useStyles from "./styles";
 
 interface Props {
   letter: string;
@@ -17,6 +19,12 @@ const Keyboard: React.FC<Props> = ({
   setCrypt,
   setCryptArray,
 }) => {
+  const classes = useStyles();
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    console.log("Key pressed:", event.key);
+  };
+
   const handleChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const input = event.key.toUpperCase();
 
@@ -53,6 +61,13 @@ const Keyboard: React.FC<Props> = ({
       <button type="button" onClick={handleClean}>
         Clean text
       </button>
+      <Grid container className={classes.wrapper}>
+        {array.letters.map((letter, index) => (
+          <button key={index} className={classes.button}>
+            {letter}
+          </button>
+        ))}
+      </Grid>
     </div>
   );
 };

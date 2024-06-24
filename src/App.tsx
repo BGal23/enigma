@@ -9,6 +9,7 @@ import { runCrypt, turnBackCrypt, State } from "./utils/encryption";
 import changeRotorPosition from "./utils/changeRotorPosition";
 import rotors from "./assets/rotors.json";
 import changePlugboard from "./utils/changePlugboard";
+import Lights from "./components/Lights/Lights";
 
 const App = () => {
   const [rotorsState, setRotorState] = useState<State[]>([
@@ -22,6 +23,7 @@ const App = () => {
   const [cryptArray, setCryptArray] = useState<string[]>([]);
   const [selectedButton, setSelectedButton] = useState("");
   const [buttonsArray, setButtonsArray] = useState<string[][]>([]);
+  const [light, setLights] = useState<string>("");
 
   const encryption = () => {
     const step0 = changeLetters(letter);
@@ -36,6 +38,7 @@ const App = () => {
     const newLetter = changePlugboard(changeNumbers(step7), buttonsArray);
 
     if (newLetter !== undefined) {
+      setLights(newLetter);
       cryptArray.push(newLetter);
       setCrypt(cryptArray.join(""));
     }
@@ -66,6 +69,8 @@ const App = () => {
       <p>Your crypt: {crypt}</p>
 
       <p>Your text: {text}</p>
+
+      <Lights light={light} />
 
       <Keyboard
         letter={letter}

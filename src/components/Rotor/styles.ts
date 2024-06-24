@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
   numberChangeWrapper: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
     height: "6em",
     gap: "1em",
   },
@@ -25,9 +26,9 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     width: "3em",
     height: "calc(100% - 4px)",
-    backgroundColor: "#D4D4D4",
+    background: "radial-gradient(circle, #dbdbdb 0%, #505050 100%)",
     borderRadius: "50%",
-    border: "2px solid silver",
+    // border: "1px solid #505050",
     gap: "0.5em",
   },
   screw: {
@@ -35,9 +36,9 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     height: "0.8em",
     width: "0.8em",
-    backgroundColor: "#D4D4D4",
+    background: "radial-gradient(circle, #dbdbdb 0%, #505050 100%)",
     borderRadius: "50%",
-    border: "2px solid silver",
+    // border: "2px solid silver",
 
     "&::before": {
       content: '""',
@@ -46,15 +47,16 @@ const useStyles = makeStyles(() => ({
       left: "50%",
       width: "100%",
       height: 2,
-      backgroundColor: "silver",
+      backgroundColor: "#6b6b6b",
       transform: "translate(-50%, -50%) rotate(45deg)",
     },
   },
   input: {
     backgroundColor: "while",
     borderRadius: 3,
-    border: "2px solid silver",
+    border: "1px solid black",
     textAlign: "center",
+    boxShadow: "inset 0px 0px 5px 0px",
     "&::-webkit-outer-spin-button, &::-webkit-inner-spin-button": {
       "-webkit-appearance": "none",
       margin: 0,
@@ -67,15 +69,18 @@ const useStyles = makeStyles(() => ({
     height: "100%",
     width: "1em",
     backgroundColor: "#D4D4D4",
-    borderRadius: 4,
-    // border: "2px solid black",
+    borderTop: "5px solid #1c1c1c",
+    borderBottom: "5px solid #1c1c1c",
+    borderRight: "1px solid #1c1c1c",
+    borderLeft: "1px solid #1c1c1c",
+    borderRadius: 6,
     cursor: "row-resize",
     overflow: "hidden",
   },
   line: {
     width: "200%",
     height: 2,
-    backgroundColor: "silver",
+    backgroundColor: "#D4D4D4",
     position: "relative",
     right: "50%",
     top: "50%",
@@ -94,6 +99,16 @@ const useStyles = makeStyles(() => ({
     "&.resetTransition": {
       transition: "none",
     },
+  },
+  gearWhole: {
+    height: "6.2em",
+    width: "1em",
+    background:
+      "linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%)",
+    position: "absolute",
+    zIndex: 2,
+    pointerEvents: "none",
+    top: 40,
   },
 }));
 
