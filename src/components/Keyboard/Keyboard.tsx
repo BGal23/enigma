@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import array from "../../assets/letters.json";
 import useStyles from "./styles";
+import { MouseEvent } from "react";
 
 interface Props {
   letter: string;
@@ -21,19 +22,19 @@ const Keyboard: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    console.log("Key pressed:", event.key);
-  };
+  // window.document.addEventListener("keydown", (event) => {
+  // handleChange(event.key.toUpperCase());
+  // console.log(event.key.toUpperCase());
+  // });
 
-  const handleChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const input = event.key.toUpperCase();
+  const handleChange = (event: MouseEvent<HTMLButtonElement>) => {
+    const key = (event.target as HTMLButtonElement).innerText;
 
-    if (array.letters.some((letter) => letter === input)) {
-      arrayNormalText.push(input);
+    if (array.letters.some((letter) => letter === key)) {
+      arrayNormalText.push(key);
       setText(arrayNormalText.join(""));
-      setLetter(input);
+      setLetter(key);
     }
-    event.preventDefault();
   };
 
   const handleClean = () => {
@@ -45,30 +46,18 @@ const Keyboard: React.FC<Props> = ({
   };
 
   return (
-    <div
-      onKeyDown={(even) => {
-        if (even.key === "Backspace") {
-          handleClean();
-        }
-      }}
-    >
-      <input
-        value={letter}
-        type="text"
-        onChange={() => {}}
-        onKeyDown={handleChange}
-      />
-      <button type="button" onClick={handleClean}>
-        Clean text
-      </button>
-      <Grid container className={classes.wrapper}>
-        {array.letters.map((letter, index) => (
-          <button key={index} className={classes.button}>
-            {letter}
-          </button>
-        ))}
-      </Grid>
-    </div>
+    <Grid container className={classes.wrapper}>
+      {array.letters.map((element, index) => (
+        <button
+          key={index}
+          className={classes.button}
+          onClick={handleChange}
+          style={{ scale: element === letter ? "0.8" : "" }}
+        >
+          {element}
+        </button>
+      ))}
+    </Grid>
   );
 };
 

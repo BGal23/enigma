@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => ({
     gap: "1em",
     flexWrap: "wrap",
     justifyContent: "space-between",
+    marginBottom: "1em",
   },
   light: {
     width: "2.5em",

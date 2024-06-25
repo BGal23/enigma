@@ -27,6 +27,7 @@ const App = () => {
 
   const encryption = () => {
     const step0 = changeLetters(letter);
+
     const step1 = runCrypt(rotorsState[2], step0);
     const step2 = runCrypt(rotorsState[1], step1);
     const step3 = runCrypt(rotorsState[0], step2);
