@@ -3,7 +3,7 @@ import Keyboard from "./components/Keyboard/Keyboard";
 import MakeRotor from "./components/MakeRotor/MakeRotor";
 import Rotor from "./components/Rotor/Rotor";
 import Plugboard from "./components/Plugboard/Plugboard";
-import { Container, Grid } from "@material-ui/core";
+import { Button, Container, Grid } from "@material-ui/core";
 import { changeLetters, changeNumbers } from "./utils/change";
 import { runCrypt, turnBackCrypt, State } from "./utils/encryption";
 import changeRotorPosition from "./utils/changeRotorPosition";
@@ -53,6 +53,13 @@ const App = () => {
     }
   }, [text]);
 
+  const handleClean = () => {
+    setText("");
+    setCrypt && setCrypt("");
+    setLetter("");
+    setCryptArray && setCryptArray([]);
+  };
+
   return (
     <Container maxWidth="sm">
       <Grid container justifyContent="space-between">
@@ -67,19 +74,15 @@ const App = () => {
         ))}
       </Grid>
 
-      <p>Your crypt: {crypt}</p>
-
-      <p>Your text: {text}</p>
+      <Grid>
+        <p>Your crypt: {crypt}</p>
+        <p>Your text: {text}</p>
+        <Button onClick={handleClean}>Clean</Button>
+      </Grid>
 
       <Lights light={light} />
 
-      <Keyboard
-        letter={letter}
-        setLetter={setLetter}
-        setText={setText}
-        setCrypt={setCrypt}
-        setCryptArray={setCryptArray}
-      />
+      <Keyboard letter={letter} setLetter={setLetter} setText={setText} />
       <Plugboard
         selectedButton={selectedButton}
         setSelectedButton={setSelectedButton}

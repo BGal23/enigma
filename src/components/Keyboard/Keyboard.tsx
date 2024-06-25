@@ -1,48 +1,33 @@
 import { Grid } from "@material-ui/core";
 import array from "../../assets/letters.json";
 import useStyles from "./styles";
-import { MouseEvent } from "react";
+import React, { useEffect } from "react";
 
 interface Props {
   letter: string;
   setLetter: (letter: string) => void;
-  setText: (text: string) => void;
-  setCrypt: (crypt: string) => void;
-  setCryptArray: (cryptArray: string[]) => void;
+  setText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-let arrayNormalText: string[] = [];
-
-const Keyboard: React.FC<Props> = ({
-  letter,
-  setLetter,
-  setText,
-  setCrypt,
-  setCryptArray,
-}) => {
+const Keyboard: React.FC<Props> = ({ letter, setLetter, setText }) => {
   const classes = useStyles();
 
-  // window.document.addEventListener("keydown", (event) => {
-  // handleChange(event.key.toUpperCase());
-  // console.log(event.key.toUpperCase());
-  // });
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      handleChange(event.key.toUpperCase());
+    };
 
-  const handleChange = (event: MouseEvent<HTMLButtonElement>) => {
-    const key = (event.target as HTMLButtonElement).innerText;
+    window.document.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.document.removeEventListener("keydown", handleKeydown);
+    };
+  }, []);
 
+  const handleChange = (key: string) => {
     if (array.letters.some((letter) => letter === key)) {
-      arrayNormalText.push(key);
-      setText(arrayNormalText.join(""));
+      setText((prevText: string) => prevText + key);
       setLetter(key);
     }
-  };
-
-  const handleClean = () => {
-    arrayNormalText = [];
-    setText("");
-    setCrypt("");
-    setLetter("");
-    setCryptArray([]);
   };
 
   return (
@@ -51,7 +36,7 @@ const Keyboard: React.FC<Props> = ({
         <button
           key={index}
           className={classes.button}
-          onClick={handleChange}
+          onClick={() => handleChange(element)}
           style={{ scale: element === letter ? "0.8" : "" }}
         >
           {element}

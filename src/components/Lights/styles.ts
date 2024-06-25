@@ -7,6 +7,15 @@ const useStyles = makeStyles(() => ({
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: "1em",
+
+    "&:after": {
+      content: '""',
+      display: "block",
+      width: "100%",
+      height: "2em",
+      background:
+        "linear-gradient(0deg, rgba(0,0,0,0) 0%, #1a1a1a 80%, rgba(0,0,0,0) 100%)",
+    },
   },
   light: {
     width: "2.5em",

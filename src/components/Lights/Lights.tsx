@@ -14,10 +14,9 @@ const Lights: React.FC<Props> = ({ light }) => {
       {array.letters.map((letter, index) => (
         <Box
           style={{
-            background:
-              light === letter
-                ? "radial-gradient(circle, rgba(196,206,0,1) 0%, rgba(0,0,0,1) 100%)"
-                : "",
+            color: light === letter ? "yellow" : "",
+            textShadow: light === letter ? "0px 0px 1em yellow" : "",
+            fontWeight: light === letter ? "bold" : "",
           }}
           key={index}
           className={classes.light}

@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import array from "../../assets/letters.json";
 import useStyles from "./styles";
 
@@ -55,16 +55,20 @@ const Plugboard: React.FC<Props> = ({
   return (
     <Grid container className={classes.wrapper}>
       {array.letters.map((letter, index) => (
-        <Box key={index}>
-          <Button
-            onClick={() => handleClick(letter)}
-            // color={handleColor(letter)}
-            style={{ background: selectedButton === letter ? "yellow" : "" }}
-            // disabled={handleColor(letter).length > 1}
-          >
-            {handleColor(letter)}
-          </Button>
-        </Box>
+        <button
+          key={index}
+          onClick={() => handleClick(letter)}
+          className={classes.button}
+          // color={handleColor(letter)}
+          style={{ background: selectedButton === letter ? "yellow" : "" }}
+          // disabled={handleColor(letter).length > 1}
+        >
+          <Grid className={classes.plugBox}>
+            <div>{handleColor(letter)}</div>
+            <div className={classes.plug}></div>
+            <div className={classes.plug}></div>
+          </Grid>
+        </button>
       ))}
     </Grid>
   );
