@@ -27,12 +27,10 @@ const Plugboard: React.FC<Props> = ({
       );
       buttonsArray.splice(deleteLetterArray, 1);
 
-      // console.log(deleteLetterArray, newLettersArray);
-
       setButtonsArray([...buttonsArray]);
     } else if (!selectedButton) {
       setSelectedButton(letter);
-    } else if (letter === selectedButton || handleColor(letter).length > 1) {
+    } else if (letter === selectedButton || handlePlug(letter) !== undefined) {
       setSelectedButton("");
     } else {
       const newLettersArray = [selectedButton, letter];
@@ -41,32 +39,42 @@ const Plugboard: React.FC<Props> = ({
     }
   };
 
-  const handleColor = (letter: string) => {
+  const handlePlug = (letter: string) => {
     for (const array of buttonsArray) {
       if (array[0] === letter) {
-        return `${array[0]} 🔄 ${array[1]}`;
+        return (
+          <div className={classes.plug}>
+            <span>{array[1]}</span>
+            <div className={classes.screw}></div>
+          </div>
+        );
       } else if (array[1] === letter) {
-        return `${array[1]} 🔄 ${array[0]}`;
+        return (
+          <div className={classes.plug}>
+            <span>{array[0]}</span>
+            <div className={classes.screw}></div>
+          </div>
+        );
       }
     }
-    return letter;
+    return;
   };
 
   return (
     <Grid container className={classes.wrapper}>
       {array.letters.map((letter, index) => (
         <button
+          type="button"
           key={index}
           onClick={() => handleClick(letter)}
           className={classes.button}
-          // color={handleColor(letter)}
-          style={{ background: selectedButton === letter ? "yellow" : "" }}
-          // disabled={handleColor(letter).length > 1}
+          style={{ background: selectedButton === letter ? "#F5F5F550" : "" }}
         >
           <Grid className={classes.plugBox}>
-            <div>{handleColor(letter)}</div>
-            <div className={classes.plug}></div>
-            <div className={classes.plug}></div>
+            {letter}
+            <div className={classes.outlet}></div>
+            <div className={classes.outlet}></div>
+            {handlePlug(letter)}
           </Grid>
         </button>
       ))}

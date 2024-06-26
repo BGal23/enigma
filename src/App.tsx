@@ -26,22 +26,25 @@ const App = () => {
   const [light, setLights] = useState<string>("");
 
   const encryption = () => {
-    const step0 = changeLetters(letter);
+    const firstPlugChange = changePlugboard(letter, buttonsArray);
 
-    const step1 = runCrypt(rotorsState[2], step0);
-    const step2 = runCrypt(rotorsState[1], step1);
-    const step3 = runCrypt(rotorsState[0], step2);
-    const step4 = rotors.ROT[step3 - 1].output;
-    const step5 = turnBackCrypt(rotorsState[0], step4);
-    const step6 = turnBackCrypt(rotorsState[1], step5);
-    const step7 = turnBackCrypt(rotorsState[2], step6);
+    if (firstPlugChange !== undefined) {
+      const step0 = changeLetters(firstPlugChange);
+      const step1 = runCrypt(rotorsState[2], step0);
+      const step2 = runCrypt(rotorsState[1], step1);
+      const step3 = runCrypt(rotorsState[0], step2);
+      const step4 = rotors.ROT[step3 - 1].output;
+      const step5 = turnBackCrypt(rotorsState[0], step4);
+      const step6 = turnBackCrypt(rotorsState[1], step5);
+      const step7 = turnBackCrypt(rotorsState[2], step6);
 
-    const newLetter = changePlugboard(changeNumbers(step7), buttonsArray);
+      const newLetter = changePlugboard(changeNumbers(step7), buttonsArray);
 
-    if (newLetter !== undefined) {
-      setLights(newLetter);
-      cryptArray.push(newLetter);
-      setCrypt(cryptArray.join(""));
+      if (newLetter !== undefined) {
+        setLights(newLetter);
+        cryptArray.push(newLetter);
+        setCrypt(cryptArray.join(""));
+      }
     }
   };
 

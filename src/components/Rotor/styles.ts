@@ -17,7 +17,20 @@ const useStyles = makeStyles(() => ({
     flexDirection: "row",
     alignItems: "center",
     height: "6em",
-    gap: "1em",
+
+    "& div": {
+      "& button": {
+        transition: "color 200ms ease-in-out",
+      },
+    },
+
+    "&:hover": {
+      "& div": {
+        "& button": {
+          color: "whitesmoke",
+        },
+      },
+    },
   },
   inputWrapper: {
     display: "flex",
@@ -28,7 +41,6 @@ const useStyles = makeStyles(() => ({
     height: "calc(100% - 4px)",
     background: "radial-gradient(circle, #dbdbdb 0%, #505050 100%)",
     borderRadius: "50%",
-    // border: "1px solid #505050",
     gap: "0.5em",
   },
   screw: {
@@ -38,7 +50,6 @@ const useStyles = makeStyles(() => ({
     width: "0.8em",
     background: "radial-gradient(circle, #dbdbdb 0%, #505050 100%)",
     borderRadius: "50%",
-    // border: "2px solid silver",
 
     "&::before": {
       content: '""',
@@ -109,6 +120,24 @@ const useStyles = makeStyles(() => ({
     zIndex: 2,
     pointerEvents: "none",
     top: 40,
+  },
+  buttons: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "100%",
+  },
+  button: {
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    fontSize: "large",
+    color: "transparent",
+    transition: "scale 200ms ease-in-out",
+
+    "&:hover": {
+      scale: "1.1",
+    },
   },
 }));
 

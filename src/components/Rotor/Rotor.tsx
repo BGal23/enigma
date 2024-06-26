@@ -70,12 +70,20 @@ const Rotor: React.FC<Props> = ({
     const delta = event.deltaY;
 
     if (delta > 0) {
+      changePosition(false);
+    } else if (delta < 0) {
+      changePosition(true);
+    }
+  };
+
+  const changePosition = (isAdd: boolean) => {
+    if (!isAdd) {
       if (position <= 1) {
         handlePositionChange(26);
       } else {
         handlePositionChange(position - 1);
       }
-    } else if (delta < 0) {
+    } else if (isAdd) {
       if (position >= 26) {
         handlePositionChange(1);
       } else {
@@ -107,6 +115,22 @@ const Rotor: React.FC<Props> = ({
 
           <div className={classes.screw}></div>
         </Box>
+        <div className={classes.buttons}>
+          <button
+            type="button"
+            className={classes.button}
+            onClick={() => changePosition(true)}
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className={classes.button}
+            onClick={() => changePosition(false)}
+          >
+            -
+          </button>
+        </div>
         <div className={classes.gearBox} onWheel={handleMouseWheel}>
           {gear.map((element, index) => (
             <div

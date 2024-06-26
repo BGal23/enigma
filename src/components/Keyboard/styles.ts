@@ -6,6 +6,14 @@ const useStyles = makeStyles(() => ({
     gap: "1em",
     flexWrap: "wrap",
     justifyContent: "space-between",
+
+    "&:after": {
+      content: '""',
+      display: "block",
+      width: "100%",
+      height: "1em",
+      background: "linear-gradient(0deg, #1a1a1a 0%, rgba(0,0,0,0) 100%)",
+    },
   },
   button: {
     width: "2.5em",
