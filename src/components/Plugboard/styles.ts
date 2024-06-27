@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles(() => ({
   wrapper: {
     display: "flex",
-    columnGap: "1em",
+    columnGap: "0.5em",
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginTop: "1em",

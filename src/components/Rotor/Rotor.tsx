@@ -94,13 +94,20 @@ const Rotor: React.FC<Props> = ({
 
   return (
     <Grid className={classes.rotorWrapper}>
-      <select name="rotor" value={num} onChange={handleRotorChange}>
-        {keys.map((value, index) => (
-          <option key={index} value={value}>
-            Rotor {value}
-          </option>
-        ))}
-      </select>
+      <div className={classes.selectWrapper}>
+        <select
+          className={classes.select}
+          name="rotor"
+          value={num}
+          onChange={handleRotorChange}
+        >
+          {keys.map((value, index) => (
+            <option key={index} value={value}>
+              Rotor {value}
+            </option>
+          ))}
+        </select>
+      </div>
       <Box className={classes.numberChangeWrapper}>
         <Box className={classes.inputWrapper}>
           <div className={classes.screw}></div>

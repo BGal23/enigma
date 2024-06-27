@@ -3,16 +3,19 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles(() => ({
   wrapper: {
     display: "flex",
-    gap: "1em",
+    gap: "0.7em",
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: "1em",
+    marginTop: "1em",
 
     "&:after": {
       content: '""',
       display: "block",
-      width: "100%",
+      position: "relative",
+      width: "calc(100% + 2em)",
       height: "2em",
+      margin: "0 -1em 0",
       background:
         "linear-gradient(0deg, rgba(0,0,0,0) 0%, #1a1a1a 80%, rgba(0,0,0,0) 100%)",
     },

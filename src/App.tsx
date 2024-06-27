@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import Keyboard from "./components/Keyboard/Keyboard";
-import MakeRotor from "./components/MakeRotor/MakeRotor";
 import Rotor from "./components/Rotor/Rotor";
 import Plugboard from "./components/Plugboard/Plugboard";
-import { Button, Container, Grid } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import { changeLetters, changeNumbers } from "./utils/change";
 import { runCrypt, turnBackCrypt, State } from "./utils/encryption";
 import changeRotorPosition from "./utils/changeRotorPosition";
 import rotors from "./assets/rotors.json";
 import changePlugboard from "./utils/changePlugboard";
 import Lights from "./components/Lights/Lights";
+import WoodenBox from "./components/WoodenBox/WoodenBox";
+import Text from "./components/Text/Text";
+import TextSwitch from "./components/TextSwitch/TextSwitch";
+import useStyles from "./styles";
 
 const App = () => {
   const [rotorsState, setRotorState] = useState<State[]>([
@@ -24,6 +27,9 @@ const App = () => {
   const [selectedButton, setSelectedButton] = useState("");
   const [buttonsArray, setButtonsArray] = useState<string[][]>([]);
   const [light, setLights] = useState<string>("");
+  const [isShowText, setIsShowText] = useState<boolean>(false);
+
+  const classes = useStyles();
 
   const encryption = () => {
     const firstPlugChange = changePlugboard(letter, buttonsArray);
@@ -65,35 +71,36 @@ const App = () => {
 
   return (
     <Container maxWidth="sm">
-      <Grid container justifyContent="space-between">
-        {rotorsState.map((element, index) => (
-          <Rotor
-            {...element}
-            rotorsState={rotorsState}
-            index={index}
-            key={index}
-            changeRotor={setRotorState}
-          />
-        ))}
-      </Grid>
+      <WoodenBox>
+        <Grid className={classes.rotors}>
+          {rotorsState.map((element, index) => (
+            <Rotor
+              {...element}
+              rotorsState={rotorsState}
+              index={index}
+              key={index}
+              changeRotor={setRotorState}
+            />
+          ))}
+          <TextSwitch isShowText={isShowText} setIsShowText={setIsShowText} />
+        </Grid>
 
-      <Grid>
-        <p>Your crypt: {crypt}</p>
-        <p>Your text: {text}</p>
-        <Button onClick={handleClean}>Clean</Button>
-      </Grid>
+        {isShowText ? (
+          <Text crypt={crypt} text={text} handleClean={handleClean} />
+        ) : (
+          <br />
+        )}
 
-      <Lights light={light} />
+        <Lights light={light} />
 
-      <Keyboard letter={letter} setLetter={setLetter} setText={setText} />
-      <Plugboard
-        selectedButton={selectedButton}
-        setSelectedButton={setSelectedButton}
-        buttonsArray={buttonsArray}
-        setButtonsArray={setButtonsArray}
-      />
-      <div> </div>
-      <MakeRotor />
+        <Keyboard letter={letter} setLetter={setLetter} setText={setText} />
+        <Plugboard
+          selectedButton={selectedButton}
+          setSelectedButton={setSelectedButton}
+          buttonsArray={buttonsArray}
+          setButtonsArray={setButtonsArray}
+        />
+      </WoodenBox>
     </Container>
   );
 };
