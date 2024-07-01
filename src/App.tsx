@@ -6,7 +6,7 @@ import { Container, Grid } from "@material-ui/core";
 import { changeLetters, changeNumbers } from "./utils/change";
 import { runCrypt, turnBackCrypt, State } from "./utils/encryption";
 import changeRotorPosition from "./utils/changeRotorPosition";
-import rotors from "./assets/rotors.json";
+import turnRotors from "./assets/turnRotor.json";
 import changePlugboard from "./utils/changePlugboard";
 import Lights from "./components/Lights/Lights";
 import WoodenBox from "./components/WoodenBox/WoodenBox";
@@ -39,7 +39,7 @@ const App = () => {
       const step1 = runCrypt(rotorsState[2], step0);
       const step2 = runCrypt(rotorsState[1], step1);
       const step3 = runCrypt(rotorsState[0], step2);
-      const step4 = rotors.ROT[step3 - 1].output;
+      const step4 = turnRotors.TURN[step3 - 1].output;
       const step5 = turnBackCrypt(rotorsState[0], step4);
       const step6 = turnBackCrypt(rotorsState[1], step5);
       const step7 = turnBackCrypt(rotorsState[2], step6);

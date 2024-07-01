@@ -24,8 +24,9 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    boxShadow: "inset 0px 0px 5px 0px black",
-    backgroundColor: "#2b2b2b",
+    boxShadow: "-5px 5px 5px 0px black",
+    background:
+      "radial-gradient(circle, rgba(7, 7, 7, 1) 0%, rgba(31, 31, 31, 1) 100%)",
     color: "white",
     fontFamily: '"FreeMono", sans-serif',
     fontSize: "1.1em",

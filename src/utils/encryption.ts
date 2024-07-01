@@ -2,9 +2,11 @@ import rotorsData from "../assets/rotors.json";
 import correctedRotor from "./correctedRotor";
 
 export interface State {
-  num: string;
+  num: RotorKeys;
   position: number;
 }
+
+export type RotorKeys = "I" | "II" | "III" | "IV" | "V";
 
 interface Rotor {
   input: number;

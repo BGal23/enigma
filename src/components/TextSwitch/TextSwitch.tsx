@@ -10,17 +10,23 @@ interface Props {
 const TextSwitch: React.FC<Props> = ({ isShowText, setIsShowText }) => {
   const classes = useStyles();
   return (
-    <Box
-      sx={{
-        width: "7em",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
+    <Box className={classes.box}>
       <img src={logo} className={classes.logo} />
-      <input type="checkbox" onChange={() => setIsShowText(!isShowText)} />
+      <label className={classes.checkbox}>
+        <input
+          type="checkbox"
+          onChange={() => setIsShowText(!isShowText)}
+          className={classes.input}
+        />
+        <div className={classes.enigmaSwitch}>
+          <div className={classes.array}>
+            <div className={classes.switch}>
+              <div className={classes.screw}></div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <p className={classes.text}>SHOW TEXT & CRYPT</p>
     </Box>
   );
 };

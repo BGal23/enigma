@@ -23,6 +23,7 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     gap: "0.4em",
     color: "transparent",
+    boxShadow: "-2px 2px 5px 0px black",
   },
   button: {
     color: "whitesmoke",
@@ -74,6 +75,7 @@ const useStyles = makeStyles(() => ({
     background: "black",
     border: "4px solid whitesmoke",
     borderRadius: "1em",
+    boxShadow: "-3px 3px 5px 0px black",
   },
 
   screw: {

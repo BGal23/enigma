@@ -1,16 +1,17 @@
 import { ChangeEvent, WheelEvent, useEffect, useRef, useState } from "react";
 import rotors from "../../assets/rotors.json";
-import { State } from "../../utils/encryption";
 import useStyles from "./styles";
 import { Box, Grid } from "@material-ui/core";
 
 interface Props {
-  rotorsState: State[];
+  rotorsState: { num: RotorKeys; position: number }[];
   index: number;
-  num: string;
+  num: RotorKeys;
   position: number;
-  changeRotor: (newRotor: { num: string; position: number }[]) => void;
+  changeRotor: (newRotor: { num: RotorKeys; position: number }[]) => void;
 }
+
+type RotorKeys = "I" | "II" | "III" | "IV" | "V";
 
 const Rotor: React.FC<Props> = ({
   rotorsState,
@@ -19,7 +20,7 @@ const Rotor: React.FC<Props> = ({
   position,
   changeRotor,
 }) => {
-  const keys = Object.keys(rotors);
+  const keys: RotorKeys[] = Object.keys(rotors) as RotorKeys[];
   const classes = useStyles();
   const [isMove, setIsMove] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(true);
@@ -50,7 +51,7 @@ const Rotor: React.FC<Props> = ({
 
   const handleRotorChange = (event: ChangeEvent<HTMLSelectElement>) => {
     rotorsState.splice(index, 1, {
-      num: event.target.value,
+      num: event.target.value as RotorKeys,
       position: position,
     });
 

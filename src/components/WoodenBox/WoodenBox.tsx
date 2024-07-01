@@ -1,6 +1,11 @@
+import { ReactNode } from "react";
 import useStyles from "./styles";
 
-const WoodenBox = ({ children }) => {
+interface WoodenBoxProps {
+  children: ReactNode;
+}
+
+const WoodenBox: React.FC<WoodenBoxProps> = ({ children }) => {
   const classes = useStyles();
   return (
     <div className={classes.verticalBox}>
