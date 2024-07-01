@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-  wrapper: {
+  keyboardWrapper: {
     display: "flex",
     gap: "0.5em",
     flexWrap: "wrap",

@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-  wrapper: {
+  plugWrapper: {
     display: "flex",
     columnGap: "0.5em",
     flexWrap: "wrap",

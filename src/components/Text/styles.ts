@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 import paper from "../../assets/image/paper.avif";
 
 const useStyles = makeStyles(() => ({
-  wrapper: {
+  mainTextWrapper: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",

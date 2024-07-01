@@ -61,7 +61,7 @@ const Plugboard: React.FC<Props> = ({
   };
 
   return (
-    <Grid container className={classes.wrapper}>
+    <Grid container className={classes.plugWrapper}>
       {array.letters.map((letter, index) => (
         <button
           type="button"

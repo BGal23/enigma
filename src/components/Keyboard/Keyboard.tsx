@@ -31,7 +31,7 @@ const Keyboard: React.FC<Props> = ({ letter, setLetter, setText }) => {
   };
 
   return (
-    <Grid container className={classes.wrapper}>
+    <Grid container className={classes.keyboardWrapper}>
       {array.letters.map((element, index) => (
         <button
           key={index}

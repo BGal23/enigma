@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-  wrapper: {
+  lightWrapper: {
     display: "flex",
     gap: "0.7em",
     flexWrap: "wrap",

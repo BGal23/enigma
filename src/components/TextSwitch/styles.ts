@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-  box: {
+  switchBox: {
     width: "7em",
     display: "flex",
     gap: "1em",

@@ -10,7 +10,7 @@ const Lights: React.FC<Props> = ({ light }) => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.wrapper}>
+    <Grid container className={classes.lightWrapper}>
       {array.letters.map((letter, index) => (
         <Box
           style={{

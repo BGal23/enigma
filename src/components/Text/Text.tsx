@@ -15,7 +15,7 @@ const Text: React.FC<Props> = ({ crypt, text, handleClean }) => {
   };
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.mainTextWrapper}>
       <Box className={classes.textWrapper}>
         <p>{text ? text : "Your text"}</p>
       </Box>

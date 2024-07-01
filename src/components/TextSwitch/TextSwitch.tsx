@@ -10,7 +10,7 @@ interface Props {
 const TextSwitch: React.FC<Props> = ({ isShowText, setIsShowText }) => {
   const classes = useStyles();
   return (
-    <Box className={classes.box}>
+    <Box className={classes.switchBox}>
       <img src={logo} className={classes.logo} />
       <label className={classes.checkbox}>
         <input
