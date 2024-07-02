@@ -16,12 +16,14 @@ const Text: React.FC<Props> = ({ crypt, text, handleClean }) => {
 
   return (
     <div className={classes.mainTextWrapper}>
-      <Box className={classes.textWrapper}>
-        <p>{text ? text : "Your text"}</p>
-      </Box>
-      <Box className={classes.textWrapper}>
-        <p>{crypt ? crypt : "Enigma crypt"}</p>
-      </Box>
+      <div className={classes.textAndCryptWrapper}>
+        <Box className={classes.textWrapper}>
+          <p>{text ? text : "Your text"}</p>
+        </Box>
+        <Box className={classes.textWrapper}>
+          <p>{crypt ? crypt : "Enigma crypt"}</p>
+        </Box>
+      </div>
       <div className={classes.buttons}>
         <button type="button" onClick={handleClean}>
           CLEAN

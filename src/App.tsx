@@ -72,16 +72,18 @@ const App = () => {
   return (
     <Container maxWidth="sm">
       <WoodenBox>
-        <Grid className={classes.rotors}>
-          {rotorsState.map((element, index) => (
-            <Rotor
-              {...element}
-              rotorsState={rotorsState}
-              index={index}
-              key={index}
-              changeRotor={setRotorState}
-            />
-          ))}
+        <Grid className={classes.rotorsAndSwitch}>
+          <div className={classes.rotors}>
+            {rotorsState.map((element, index) => (
+              <Rotor
+                {...element}
+                rotorsState={rotorsState}
+                index={index}
+                key={index}
+                changeRotor={setRotorState}
+              />
+            ))}
+          </div>
           <TextSwitch isShowText={isShowText} setIsShowText={setIsShowText} />
         </Grid>
 
