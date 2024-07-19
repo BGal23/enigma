@@ -3,3 +3,7 @@ body {
   color: whitesmoke;
   font-family: "FreeMono", sans-serif;
 }
+body,
+html {
+  overflow-x: hidden;
+}

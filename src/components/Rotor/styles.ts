@@ -39,11 +39,14 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      width: "3em",
+      width: "2em",
       height: "calc(100% - 4px)",
       background: "radial-gradient(circle, #dbdbdb 0%, #505050 100%)",
       borderRadius: "50%",
       gap: "0.5em",
+      [theme.breakpoints.up("sm")]: {
+        width: "3em",
+      },
     },
     screw: {
       content: '""',
