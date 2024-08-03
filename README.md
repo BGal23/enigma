@@ -5,7 +5,7 @@ When creating the application, I used tools such as TypeScript, React.js, Materi
 
 Below I am posting a short instruction of the application's operation.
 
-<img src="./src/assets/image/enigma_info.png" alt="enigma instruction/>
+![enigma instruction](./src/assets/image/enigma_info.png)
 
 Or run it on your own computer:
 
@@ -13,7 +13,6 @@ Or run it on your own computer:
 <li>Download the repository.</li>
 <li>Run the development server <code>npm run dev</code>.</li>
 <li>Open <a>http://localhost:5173/enigma</a></li>
-<li>Or you can open it on the other device in your local network <a>http://192.168.100.6:5173/enigma</a></li>
 </ol>
 
 Have fun 😊
