@@ -1,30 +1,19 @@
-# React + TypeScript + Vite
+Enigma is a simple application simulating a German encryption and decryption machine.
+When creating the application, I used tools such as TypeScript, React.js, MaterialUI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<a>https://bgal23.github.io/enigma/</a>
 
-Currently, two official plugins are available:
+Below I am posting a short instruction of the application's operation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img src="./src/assets/image/enigma_info.png" alt="enigma instruction/>
 
-## Expanding the ESLint configuration
+Or run it on your own computer:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<ol>
+<li>Download the repository.</li>
+<li>Run the development server <code>npm run dev</code>.</li>
+<li>Open <a>http://localhost:5173/enigma</a></li>
+<li>Or you can open it on the other device in your local network <a>http://192.168.100.6:5173/enigma</a></li>
+</ol>
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Have fun 😊
